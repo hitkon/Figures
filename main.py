@@ -1,191 +1,82 @@
-from PyQt5 import QtWidgets, uic, QtCore
-from PyQt5.QtCore import *
-import sys
-from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtWidgets import QColorDialog, QPushButton
+# This is a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+import tkinter
+from tkinter import colorchooser
+from Interval import Interval
+
+LeftMousseButtonPressed = False
+Figures = []
+
+def leftclick(event):
+    canva.old_coords = event.x, event.y
+    # a = Interval(event.x, event.y, event.x, event.y)
+    #Figures.append(Interval(event.x, event.y, event.x, event.y))
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1017, 652)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(110, 0, 453, 131))
-        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.pushButtonLine = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonLine.sizePolicy().hasHeightForWidth())
-        self.pushButtonLine.setSizePolicy(sizePolicy)
-        self.pushButtonLine.setIconSize(QtCore.QSize(65, 60))
-        self.pushButtonLine.setObjectName("pushButtonLine")
-        self.gridLayout.addWidget(self.pushButtonLine, 0, 0, 1, 1)
-        self.pushButtonCircle = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonCircle.sizePolicy().hasHeightForWidth())
-        self.pushButtonCircle.setSizePolicy(sizePolicy)
-        self.pushButtonCircle.setObjectName("pushButtonCircle")
-        self.gridLayout.addWidget(self.pushButtonCircle, 1, 0, 1, 1)
-        self.pushButtonEllipse = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonEllipse.sizePolicy().hasHeightForWidth())
-        self.pushButtonEllipse.setSizePolicy(sizePolicy)
-        self.pushButtonEllipse.setObjectName("pushButtonEllipse")
-        self.gridLayout.addWidget(self.pushButtonEllipse, 1, 1, 1, 1)
-        self.pushButtonInterval = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonInterval.sizePolicy().hasHeightForWidth())
-        self.pushButtonInterval.setSizePolicy(sizePolicy)
-        self.pushButtonInterval.setObjectName("pushButtonInterval")
-        self.gridLayout.addWidget(self.pushButtonInterval, 0, 1, 1, 1)
-        self.pushButtonSquare = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonSquare.sizePolicy().hasHeightForWidth())
-        self.pushButtonSquare.setSizePolicy(sizePolicy)
-        self.pushButtonSquare.setObjectName("pushButtonSquare")
-        self.gridLayout.addWidget(self.pushButtonSquare, 1, 2, 1, 1)
-        self.pushButtonRay = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonRay.sizePolicy().hasHeightForWidth())
-        self.pushButtonRay.setSizePolicy(sizePolicy)
-        self.pushButtonRay.setObjectName("pushButtonRay")
-        self.gridLayout.addWidget(self.pushButtonRay, 0, 2, 1, 1)
-        self.pushButtonRightTriangle = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonRightTriangle.sizePolicy().hasHeightForWidth())
-        self.pushButtonRightTriangle.setSizePolicy(sizePolicy)
-        self.pushButtonRightTriangle.setObjectName("pushButtonRightTriangle")
-        self.gridLayout.addWidget(self.pushButtonRightTriangle, 1, 3, 1, 1)
-        self.pushButtonPolygon = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonPolygon.sizePolicy().hasHeightForWidth())
-        self.pushButtonPolygon.setSizePolicy(sizePolicy)
-        self.pushButtonPolygon.setObjectName("pushButtonPolygon")
-        self.gridLayout.addWidget(self.pushButtonPolygon, 0, 3, 1, 1)
-        self.pushButtonRegualarPolygon = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonRegualarPolygon.sizePolicy().hasHeightForWidth())
-        self.pushButtonRegualarPolygon.setSizePolicy(sizePolicy)
-        self.pushButtonRegualarPolygon.setObjectName("pushButtonRegualarPolygon")
-        self.gridLayout.addWidget(self.pushButtonRegualarPolygon, 1, 4, 1, 1)
-        self.pushButtonRectangle = QtWidgets.QPushButton(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonRectangle.sizePolicy().hasHeightForWidth())
-        self.pushButtonRectangle.setSizePolicy(sizePolicy)
-        self.pushButtonRectangle.setObjectName("pushButtonRectangle")
-        self.gridLayout.addWidget(self.pushButtonRectangle, 0, 4, 1, 1)
-        self.gridLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, -1, 111, 131))
-        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.pushButtonMove = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonMove.sizePolicy().hasHeightForWidth())
-        self.pushButtonMove.setSizePolicy(sizePolicy)
-        self.pushButtonMove.setObjectName("pushButtonMove")
-        self.gridLayout_2.addWidget(self.pushButtonMove, 0, 0, 1, 1)
-        self.pushButtonDrag = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButtonDrag.sizePolicy().hasHeightForWidth())
-        self.pushButtonDrag.setSizePolicy(sizePolicy)
-        self.pushButtonDrag.setObjectName("pushButtonDrag")
-        self.gridLayout_2.addWidget(self.pushButtonDrag, 1, 0, 1, 1)
-        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
-        self.graphicsView.setGeometry(QtCore.QRect(0, 130, 1011, 481))
-        self.graphicsView.setObjectName("graphicsView")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1017, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+def mouseMotionWithLeftButtonPressed(event):
+    x1, y1, = canva.old_coords
+    if canva.cur_fig:
+        canva.cur_fig.delete(canva)
+    canva.cur_fig = Interval(x1, y1, event.x, event.y, canva.currentLineColor)
+    canva.cur_fig.draw(canva)
+    #print ('Motion')
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+def mouseReleased(event):
+    x1, y1, = canva.old_coords
+    if canva.cur_fig:
+        canva.cur_fig.delete(canva)
+    Figures.append(Interval(x1, y1, event.x, event.y, canva.currentLineColor))
+    Figures[-1].draw(canva)
 
-        self.button = QPushButton('Open color dialog')
-        self.button.move(200, 200)
-        self.button.setToolTip('Opens color dialog')
-        self.button.move(10, 10)
-        self.button.clicked.connect(self.on_click)
-        self.button.show()
+def Linecolor():
+    canva.currentLineColor = colorchooser.askcolor()[1]
+    #print (currentLineColor)
 
+def Fillcolor():
+    canva.currentFillColor = colorchooser.askcolor()[1]
+    # return my_color[1]
 
-    def openColorDialog(self):
-        color = QColorDialog.getColor()
-
-        if color.isValid():
-            print(color.name())
-
-    #@pyqtSlot()
-    def on_click(self):
-        self.openColorDialog(self)
-
-
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButtonLine.setText(_translate("MainWindow", "Line"))
-        self.pushButtonCircle.setText(_translate("MainWindow", "Circle"))
-        self.pushButtonEllipse.setText(_translate("MainWindow", "Ellipse"))
-        self.pushButtonInterval.setText(_translate("MainWindow", "Interval"))
-        self.pushButtonSquare.setText(_translate("MainWindow", "Square"))
-        self.pushButtonRay.setText(_translate("MainWindow", "Ray"))
-        self.pushButtonRightTriangle.setText(_translate("MainWindow", "Right Triangle"))
-        self.pushButtonPolygon.setText(_translate("MainWindow", "Polygon"))
-        self.pushButtonRegualarPolygon.setText(_translate("MainWindow", "Regular Polygon"))
-        self.pushButtonRectangle.setText(_translate("MainWindow", "Rectangle"))
-        self.pushButtonMove.setText(_translate("MainWindow", "Move"))
-        self.pushButtonDrag.setText(_translate("MainWindow", "Draw"))
-
-"""class Ui(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Ui, self).__init__()  # Call the inherited classes __init__ method
-        # QString path_gui = dir.relativeFilePath("D:/images/image.bmp")
-        cur_dir = QDir.currentPath()
-        path_to_gui = cur_dir + "/basic.ui"
-        uic.loadUi(path_to_gui, self)
-        self.pushButton.setStyleSheet("background-image : url(golden.jpg);")
-        self.show()
-"""
-
+def deleteLastFigure(event):
+    Figures[-1].delete(canva)
+    Figures.pop()
+    #print('z-pressed')
 
 if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    main_window = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(main_window)
-    main_window.show()
-    app.exec_()
+    root = tkinter.Tk()
+    root.geometry("600x600")
+
+    canva = tkinter.Canvas(root, width = 200, height= 400, bg = 'white')
+
+    canva.old_coords = None
+    canva.cur_fig = None
+
+    canva.bind("<Button-1>", leftclick)
+    canva.bind('<B1-Motion>', mouseMotionWithLeftButtonPressed)
+    canva.bind('<ButtonRelease>', mouseReleased)
+    root.bind('<Key-z>', deleteLastFigure)
+    canva.place(x=0,y=0)
+
+
+
+    button_Line_Color = tkinter.Button(text= 'Line Color', command=Linecolor, width = 7, height = 1)
+    button_Line_Color.place(x=210,y=0)
+    button_Fill_Color = tkinter.Button(text='Fill Color', command=Fillcolor, width=7, height=1)
+    button_Fill_Color.place(x=280, y=0)
+
+    button_Line = tkinter.Button(text = 'Line', width=7, height = 1).place(x = 210, y = 30)
+    button_Rectangle = tkinter.Button(text='Rectangle', width=7, height=1).place(x=280, y=30)
+    button_Ellipse = tkinter.Button(text='Ellipse', width=7, height=1).place(x=350, y=30)
+
+    var = tkinter.IntVar()
+    var.set(0)
+    Line_RadioButton = tkinter.Radiobutton(text = 'Line', variable = var, value = 0).place(x=210, y = 60)
+    Ray_RadioButton = tkinter.Radiobutton(text='Ray', variable=var, value=1).place(x=210, y = 90)
+    Interval_RadioButton = tkinter.Radiobutton(text='Interval', variable=var, value=2).place(x=210, y = 120)
+
+
+    root.mainloop()
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
