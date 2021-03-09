@@ -1,7 +1,5 @@
 
 import tkinter
-from tkinter import colorchooser
-from Interval import Interval
 
 from tkinter import Tk, Frame, Menu, Button
 from tkinter import LEFT, RIGHT, TOP, X, FLAT, RAISED
@@ -48,14 +46,6 @@ class ToolBar(Frame):
 
         self.button_help = tkinter.Button(self, text='Help', command=app.Fillcolor, width=10, height=2)
         self.button_help.grid(row=12, column=1, padx=10, pady=10)
-
-
-
-
-
-
-        #self.button_Rectangle = tkinter.Button(text='Rectangle', width=7, height=1).place(x=280, y=30)
-        #self.button_Ellipse = tkinter.Button(text='Ellipse', width=7, height=1).place(x=350, y=30)
 
 
 class FigureChooser:

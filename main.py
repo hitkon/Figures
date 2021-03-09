@@ -5,10 +5,11 @@
 
 import tkinter
 from tkinter import colorchooser
+from tool_bar import ToolBar
 
 from Interval import Interval
-
-from tool_bar import ToolBar
+from Ray import Ray
+from Line import Line
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
 
@@ -23,10 +24,7 @@ class App(tkinter.Tk):
         self.tool_bar = ToolBar(self)
 
         self.Figures = []
-        self.current_figure_name = 'Interval'
-        self.names_to_figures = {
-            'Interval': Interval
-        }
+        self.cur_fig_name = 'Line'
 
         self.LeftMousseButtonPressed = False
         self.bind('<Key-z>', self.deleteLastFigure)
@@ -42,33 +40,37 @@ class App(tkinter.Tk):
         self.canva.bind('<B1-Motion>', self.mouseMotionWithLeftButtonPressed)
         self.canva.bind('<ButtonRelease>', self.mouseReleased)
 
+    def figure_choser(self, event):
+        x1, y1, = self.canva.old_coords
+        if self.cur_fig_name == 'Line':
+            return Line(x1, y1, event.x, event.y, self.canva.currentLineColor, self.canva.winfo_width(), self.canva.winfo_height())
+        if self.cur_fig_name == 'Ray':
+            return Ray(x1, y1, event.x, event.y, self.canva.currentLineColor, self.canva.winfo_width(), self.canva.winfo_height())
+        if self.cur_fig_name == 'Interval':
+            return Interval(x1, y1, event.x, event.y, self.canva.currentLineColor)
+
     def leftclick(self, event):
         self.canva.old_coords = event.x, event.y
-        # a = Interval(event.x, event.y, event.x, event.y)
-        # Figures.append(Interval(event.x, event.y, event.x, event.y))
 
     def mouseMotionWithLeftButtonPressed(self, event):
         x1, y1, = self.canva.old_coords
         if self.canva.cur_fig:
             self.canva.cur_fig.delete(self.canva)
-        cur_figure_class = self.names_to_figures[self.current_figure_name]
-        self.canva.cur_fig = cur_figure_class(x1, y1, event.x, event.y, self.canva.currentLineColor)
+        self.canva.cur_fig = self.figure_choser(event)
         self.canva.cur_fig.draw(self.canva)
-        # print ('Motion')
 
     def mouseReleased(self, event):
         x1, y1, = self.canva.old_coords
         if self.canva.cur_fig:
             self.canva.cur_fig.delete(self.canva)
-        self.Figures.append(Interval(x1, y1, event.x, event.y, self.canva.currentLineColor))
+        self.Figures.append(self.figure_choser(event))
         self.Figures[-1].draw(self.canva)
 
     def Linecolor(self):
         self.canva.currentLineColor = colorchooser.askcolor()[1]
-        # print (currentLineColor)
 
     def choose_figure_name(self, figure_name):
-        self.current_figure_name = figure_name
+        self.cur_fig_name = figure_name
 
     def Fillcolor(self):
         self.canva.currentFillColor = colorchooser.askcolor()[1]
