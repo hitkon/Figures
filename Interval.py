@@ -12,21 +12,19 @@ from Point import Point
 
 
 class Interval(OneDim):
-    def __init__(self, x1, y1, x2, y2, color):
+    def __init__(self, x1, y1, x2, y2, color, tags):
         OneDim.__init__(self)
         self.line_color = color
         self.points.append(Point(x1, y1))
         self.points.append(Point(x2, y2))
+        self.tags = tags
+        self.id = None
 
     def draw(self, canvas):
-        self.obj.append(canvas.create_line(self.points[0].get_x(), self.points[0].get_y(),
-                                           self.points[-1].get_x(), self.points[-1].get_y(),
-                                           width=3, fill=self.line_color))
-
-    def move(self, delta, canvas, tag):
-        for i, p in enumerate(self.points):
-            self.points[i] += delta
-        self.canvas.move(tag, self.points[0], self.points[1])
+        self.id = canvas.create_line(self.points[0].get_x(), self.points[0].get_y(),
+                                     self.points[-1].get_x(), self.points[-1].get_y(),
+                                     width=3, fill=self.line_color, tags=(self.tags,))
+        self.obj.append(self.id)
 
     # def left_click(self, event):
     #     self.points.append(Point(event.x, event.y))

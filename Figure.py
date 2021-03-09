@@ -16,6 +16,7 @@ class Figure:
         self.line_color = "black"
         self.points = []
         self.obj = []
+        self.id = None
 
     def draw(self, canvas):
         pass
@@ -26,8 +27,10 @@ class Figure:
     def get_points(self):
         return self.points
 
-    def move(self, delta):
-        pass
+    def move(self, delta, canvas):
+        for i, p in enumerate(self.points):
+            self.points[i] += delta
+        canvas.move(self.id, delta.x, delta.y)
 
     def set_line_color(self, color):
         self.line_color = color

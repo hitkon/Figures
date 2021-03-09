@@ -1,16 +1,17 @@
 import tkinter
 from tkinter import colorchooser
 
+from Interval import Interval
+from Line import Line
 from Point import Point
 from Polygon import Polygon
-from tool_bar import ToolBar
-
-from Interval import Interval
 from Ray import Ray
-from Line import Line
+from tool_bar import ToolBar
 
 
 class App(tkinter.Tk):
+    DEFAULT_WINDOW_MUL = 100
+
     def __init__(self):
         super().__init__()
         self.canvas_cur_fig = None
@@ -24,11 +25,12 @@ class App(tkinter.Tk):
 
         self.tool_bar = ToolBar(self)
 
-        self.Figures = []
+        self.figures = []
+        self.tags = {}
         self.cur_fig_name = 'Line'
         self.cursor = 'Standard'
 
-        self.LeftMousseButtonPressed = False
+        self.left_mouse_button_pressed = False
         self.bind('<Key-z>', self.delete_last_figure)
 
     def init_canvas(self):
@@ -39,16 +41,25 @@ class App(tkinter.Tk):
 
     def figure_chooser(self, event):
         x1, y1, = self.canvas_old_coords
+        max_tag = 0
+        if self.tags:
+            max_tag = max(self.tags.keys()) + 1
         if self.cur_fig_name == 'Line':
-            return Line(x1, y1, event.x, event.y, self.canvas_current_line_color, self.canvas.winfo_width(),
-                        self.canvas.winfo_height())
+            self.tags[max_tag] = Line(x1, y1, event.x, event.y, self.canvas_current_line_color,
+                                      self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
+                                      self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
+            return self.tags[max_tag]
         if self.cur_fig_name == 'Ray':
-            return Ray(x1, y1, event.x, event.y, self.canvas_current_line_color, self.canvas.winfo_width(),
-                       self.canvas.winfo_height())
+            self.tags[max_tag] = Ray(x1, y1, event.x, event.y, self.canvas_current_line_color,
+                                     self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
+                                     self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
+            return self.tags[max_tag]
         if self.cur_fig_name == 'Interval':
-            return Interval(x1, y1, event.x, event.y, self.canvas_current_line_color)
+            self.tags[max_tag] = Interval(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
+            return self.tags[max_tag]
         if self.cur_fig_name == 'Polygon':
-            return Polygon(x1, y1, event.x, event.y, self.canvas_current_line_color)
+            self.tags[max_tag] = Polygon(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
+            return self.tags[max_tag]
 
     def left_click(self, event):
         self.canvas_old_coords = event.x, event.y
@@ -60,29 +71,20 @@ class App(tkinter.Tk):
             self.canvas_cur_fig = self.figure_chooser(event)
             self.canvas_cur_fig.draw(self.canvas)
         if self.cursor == 'Move':
-            item = self.canvas.find_closest(self.canvas_old_coords)
-            #tag = self.canvas.itemcget("current", "tags")
-            #if self.canvas_cur_fig:
-            #    self.canvas_cur_fig.delete(self.canvas)
             delta = Point(event.x - self.canvas_old_coords[0], event.y - self.canvas_old_coords[1])
             self.canvas_old_coords = event.x, event.y
-            self.canvas_cur_fig.move(delta)
-
-            self.canvas_cur_fig.draw(self.canvas)
+            tag = self.canvas.itemcget("current", "tags")
+            o = self.tags[int(tag.split(' ', 1)[0])]
+            o.move(delta, self.canvas)
 
     def mouse_released(self, event):
         if self.cursor == 'Standard':
             if self.canvas_cur_fig:
                 self.canvas_cur_fig.delete(self.canvas)
-            self.Figures.append(self.figure_chooser(event))
-            self.Figures[-1].draw(self.canvas)
+            self.figures.append(self.figure_chooser(event))
+            self.figures[-1].draw(self.canvas)
         if self.cursor == 'Move':
-            # if self.canvas.cur_fig:
-            #    self.canvas.cur_fig.delete(self.canvas)
-            self.Figures[-1].delete(self.canvas)
-            self.Figures.pop()
-            self.Figures.append(self.figure_chooser(event))
-            self.Figures[-1].draw(self.canvas)
+            pass
 
     def line_color(self):
         self.canvas.currentLineColor = colorchooser.askcolor()[1]
@@ -95,19 +97,18 @@ class App(tkinter.Tk):
         # return my_color[1]
 
     def delete_last_figure(self):
-        self.Figures[-1].delete(self.canvas)
-        self.Figures.pop()
+        self.figures[-1].delete(self.canvas)
+        self.figures.pop()
         # print('z-pressed')
 
     def move(self):
         self.cursor = 'Move'
 
     def clear(self):
-        self.Figures.clear()
+        self.figures.clear()
         self.canvas.delete("all")
 
 
 if __name__ == '__main__':
     app = App()
     app.mainloop()
-
