@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6224ae89-b084-4109-a529-9af977223b02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Ellipse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ellipse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/Figure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Interval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Line.py" beforeDir="false" afterPath="$PROJECT_DIR$/Line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OneDim.py" beforeDir="false" afterPath="$PROJECT_DIR$/OneDim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Point.py" beforeDir="false" afterPath="$PROJECT_DIR$/Point.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Polygon.py" beforeDir="false" afterPath="$PROJECT_DIR$/Polygon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PolygonalLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/PolygonalLine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegularPolygon.py" beforeDir="false" afterPath="$PROJECT_DIR$/RegularPolygon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rhomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rhombus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RightTriangle.py" beforeDir="false" afterPath="$PROJECT_DIR$/RightTriangle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwoDim.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwoDim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool_bar.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool_bar.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +23,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonProject" />
+      <module name="Figures" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Applications\anaconda3\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\ivanz\PycharmProjects\PyCharmLearningProject\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -93,8 +81,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Figures$main.coverage" NAME="main Coverage Results" MODIFIED="1615304159815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -85,13 +85,13 @@ class App(tkinter.Tk):
             self.Figures[-1].draw(self.canvas)
 
     def line_color(self):
-        self.canvas.currentLineColor = colorchooser.askcolor()[1]
+        self.canvas_current_line_color = colorchooser.askcolor()[1]
 
     def choose_figure_name(self, figure_name):
         self.cur_fig_name = figure_name
 
     def fill_color(self):
-        self.canvas.currentFillColor = colorchooser.askcolor()[1]
+        self.canvas_current_fill_color = colorchooser.askcolor()[1]
         # return my_color[1]
 
     def delete_last_figure(self):
