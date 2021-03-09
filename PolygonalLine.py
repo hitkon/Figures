@@ -10,5 +10,6 @@
 import OneDim
 import Interval
 
+
 class PolygonalLine(OneDim):
-    m_Interval= Interval()
+    m_Interval = Interval()

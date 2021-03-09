@@ -8,8 +8,6 @@
 # 
 #######################################################
 
-import tkinter
-
 
 class Figure:
     # points = []
@@ -19,7 +17,7 @@ class Figure:
         self.points = []
         self.obj = []
 
-    def draw(self):
+    def draw(self, canvas):
         pass
 
     def get_line_color(self):
@@ -28,7 +26,7 @@ class Figure:
     def get_points(self):
         return self.points
 
-    def move(self):
+    def move(self, delta):
         pass
 
     def set_line_color(self, color):
@@ -37,6 +35,6 @@ class Figure:
     def set_points(self, points):
         self.points = points
 
-    def delete(self, canva):
+    def delete(self, canvas):
         for i in self.obj:
-            canva.delete(i)
+            canvas.delete(i)
