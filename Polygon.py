@@ -7,10 +7,18 @@
 # Original author: tealh
 # 
 #######################################################
+from Point import Point
 from TwoDim import TwoDim
 
+
 class Polygon(TwoDim):
-    def draw(self):
+    def __init__(self, x1, y1, x2, y2, color):
+        TwoDim.__init__(self)
+        self.line_color = color
+        self.points.append(Point(x1, y1))
+        self.points.append(Point(x2, y2))
+
+    def draw(self, canvas):
         pass
 
     def fill(self):

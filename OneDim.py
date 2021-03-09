@@ -14,5 +14,5 @@ class OneDim(Figure):
     def __init__(self):
         Figure.__init__(self)
 
-    def move(self):
+    def move(self, delta):
         pass

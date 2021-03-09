@@ -4,10 +4,17 @@ class Point:
         self.x = x
         self.y = y
 
-    def point_change(self, x ,y):
+    def move(self, x, y):
         self.x = x
         self.y = y
+
     def get_x(self):
         return self.x
+
     def get_y(self):
         return self.y
+
+    def __iadd__(self, other):
+        self.x += other.x
+        self.y += other.y
+        return self

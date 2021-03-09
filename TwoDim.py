@@ -7,18 +7,22 @@
 # Original author: tealh
 # 
 #######################################################
-import Figure
+from Figure import Figure
+
 
 class TwoDim(Figure):
-    fill_color = #ffffff
-    def fill():
+    def __init__(self):
+        Figure.__init__(self)
+        self.fill_color = "white"
+
+    def fill(self):
         pass
 
-    def get_fill_color():
+    def get_fill_color(self):
+        return self.fill_color
+
+    def move(self, delta):
         pass
 
-    def move():
-        pass
-
-    def set_fill_color(color):
-        pass
+    def set_fill_color(self, color):
+        self.fill_color = color

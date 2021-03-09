@@ -9,5 +9,6 @@
 #######################################################
 import Polygon
 
+
 class RightTriangle(Polygon):
     pass

@@ -9,25 +9,26 @@
 #######################################################
 from Interval import Interval
 
+
 class Ray(Interval):
     def __init__(self, x1, y1, x2, y2, color, width, height):
         if x2 > x1:
             bufy = ((y1 - y2) * width + x1 * y2 - x2 * y1) / (x1 - x2)
-            if bufy >= 0 and bufy <= height:
-                Interval.__init__(self, x1,y1, width, bufy, color)
-        elif x1==x2:
+            if 0 <= bufy <= height:
+                Interval.__init__(self, x1, y1, width, bufy, color)
+        elif x1 == x2:
             pass
         else:
             bufy = (x1 * y2 - x2 * y1) / (x1 - x2)
-            if bufy >= 0 and bufy <= height:
-                Interval.__init__(self, x1,y1, 0, bufy, color)
+            if 0 <= bufy <= height:
+                Interval.__init__(self, x1, y1, 0, bufy, color)
         if y2 > y1:
             bufx = ((x2 - x1) * height + x1 * y2 - x2 * y1) / (y2 - y1)
-            if bufx >= 0 and bufx <= width:
+            if 0 <= bufx <= width:
                 Interval.__init__(self, x1, y1, bufx, height, color)
-        elif y1 ==y2:
+        elif y1 == y2:
             pass
         else:
             bufx = (x1 * y2 - x2 * y1) / (y2 - y1)
-            if bufx >= 0 and bufx <= width:
+            if 0 <= bufx <= width:
                 Interval.__init__(self, x1, y1, bufx, 0, color)

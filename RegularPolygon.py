@@ -9,9 +9,10 @@
 #######################################################
 import Polygon
 
+
 class RegularPolygon(Polygon):
-    def get_sides_num():
+    def get_sides_num(self):
         pass
 
-    def set_sides_num(value):
+    def set_sides_num(self):
         pass
