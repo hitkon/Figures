@@ -7,6 +7,7 @@ from tool_bar import ToolBar
 from Interval import Interval
 from Ray import Ray
 from Line import Line
+from PolygonalLine import PolygonalLine
 
 from Polygon import Polygon
 from Ellipse import Ellipse
@@ -19,6 +20,7 @@ class App(tkinter.Tk):
 
     def __init__(self):
         super().__init__()
+        self.points = []
         self.canvas_cur_fig = None
         self.canvas_old_coords = None
         self.canvas_current_fill_color = 'white'
@@ -39,6 +41,7 @@ class App(tkinter.Tk):
         self.bind('<Key-z>', self.delete_last_figure)
         self.bind('<KeyPress-Alt_L>', self.set_regular_on_alt_press)
         self.bind('<KeyRelease-Alt_L>', self.set_no_regular_on_alt_release)
+        self.bind('<KeyPress-Shift_L>', self.on_shift_press)
 
         self.is_regular = False
 
@@ -74,10 +77,21 @@ class App(tkinter.Tk):
         if self.cur_fig_name == 'Ellipse':
             self.tags[max_tag] = Ellipse(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                          self.canvas_current_fill_color, max_tag)
+        if self.cur_fig_name == 'Polygonal Line':
+            self.tags[max_tag] = PolygonalLine(self.points, event.x, event.y, self.canvas_current_line_color, max_tag)
             return self.tags[max_tag]
 
     def left_click(self, event):
+        self.points = []
         self.canvas_old_coords = event.x, event.y
+        self.points.append(event.x)
+        self.points.append(event.y)
+        #print("Aaa")
+
+
+    def on_shift_press(self, event):
+        self.points.append(event.x)
+        self.points.append(event.y)
 
     def mouse_motion_with_left_button_pressed(self, event):
         if self.cursor == 'Standard':
