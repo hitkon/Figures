@@ -77,6 +77,7 @@ class App(tkinter.Tk):
         if self.cur_fig_name == 'Ellipse':
             self.tags[max_tag] = Ellipse(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                          self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
 
         if self.cur_fig_name == 'Polygonal Line':
             self.tags[max_tag] = PolygonalLine(self.points, event.x, event.y, self.canvas_current_line_color, max_tag)
