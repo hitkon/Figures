@@ -7,9 +7,25 @@
 # Original author: tealh
 # 
 #######################################################
-import OneDim
-import Interval
+from OneDim import OneDim
+from Interval import Interval
 
 
 class PolygonalLine(OneDim):
-    m_Interval = Interval()
+    def __init__(self, _points, x, y, color, tag):
+        OneDim.__init__(self)
+        self.points = _points
+        self.points.append(x)
+        self.points.append(y)
+        self.line_color = color
+        self.tags = tag
+        self.id = None
+
+    def draw(self, canvas):
+        self.id = canvas.create_line(self.points,
+                                     width=3, fill=self.line_color, tags=(self.tags,))
+
+        self.points.pop()#WTF
+        self.points.pop()
+
+        self.obj.append(self.id)

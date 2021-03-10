@@ -17,12 +17,15 @@ class Interval(OneDim):
         self.line_color = color
         self.points.append(Point(x1, y1))
         self.points.append(Point(x2, y2))
+        self.points2 = [x1, y1, x2, y2]
         self.tags = tags
         self.id = None
 
     def draw(self, canvas):
-        self.id = canvas.create_line(self.points[0].get_x(), self.points[0].get_y(),
-                                     self.points[-1].get_x(), self.points[-1].get_y(),
+        # self.id = canvas.create_line(self.points[0].get_x(), self.points[0].get_y(),
+        #                              self.points[-1].get_x(), self.points[-1].get_y(),
+        #                              width=3, fill=self.line_color, tags=(self.tags,))
+        self.id = canvas.create_line(self.points2,
                                      width=3, fill=self.line_color, tags=(self.tags,))
         self.obj.append(self.id)
 
