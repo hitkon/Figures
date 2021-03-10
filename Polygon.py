@@ -12,15 +12,19 @@ from TwoDim import TwoDim
 
 
 class Polygon(TwoDim):
-    def __init__(self, x1, y1, x2, y2, color, tags):
+    def __init__(self, points, line_color, fill_color,  tags):
         self.tags = tags
         TwoDim.__init__(self)
-        self.line_color = color
-        self.points.append(Point(x1, y1))
-        self.points.append(Point(x2, y2))
+        self.line_color = line_color
+        self.fill_color = fill_color
+        self.points = points
+        self.tags = tags
+        self.id = None
 
     def draw(self, canvas):
-        pass
+        self.id = canvas.create_polygon(self.points, outline=self.line_color,
+                                        fill=self.fill_color, width=3, tags=(self.tags,))
+        self.obj.append(self.id)
 
     def fill(self):
         pass

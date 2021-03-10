@@ -9,9 +9,9 @@ from Ray import Ray
 from Line import Line
 
 from Polygon import Polygon
+from RegularPolygon import RegularPolygon
+from Rhombus import Rhombus
 from Ellipse import Ellipse
-
-
 
 
 class App(tkinter.Tk):
@@ -60,17 +60,47 @@ class App(tkinter.Tk):
                                       self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
                                       self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
             return self.tags[max_tag]
+
         if self.cur_fig_name == 'Ray':
             self.tags[max_tag] = Ray(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                      self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
                                      self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
             return self.tags[max_tag]
+
         if self.cur_fig_name == 'Interval':
             self.tags[max_tag] = Interval(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
             return self.tags[max_tag]
+
         if self.cur_fig_name == 'Polygon':
-            self.tags[max_tag] = Polygon(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
+            # points = [x1, y1, event.x, event.y]
+            # self.tags[max_tag] = Polygon(points, self.canvas_current_line_color,
+            #                             self.canvas_current_fill_color, max_tag)
             return self.tags[max_tag]
+
+        if self.cur_fig_name == 'Triangle':
+            points = [x1, y1, event.x, event.y]
+            self.tags[max_tag] = RegularPolygon(points, 3, self.canvas_current_line_color,
+                                                self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
+
+        if self.cur_fig_name == 'Rect':
+            points = [x1, y1, event.x, event.y]
+            self.tags[max_tag] = RegularPolygon(points, 4, self.canvas_current_line_color,
+                                                self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
+
+        if self.cur_fig_name == 'Pentagon':
+            points = [x1, y1, event.x, event.y]
+            self.tags[max_tag] = RegularPolygon(points, 5, self.canvas_current_line_color,
+                                                self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
+
+        if self.cur_fig_name == 'Rhombus':
+            points = [x1, y1, event.x, event.y]
+            self.tags[max_tag] = Rhombus(points, self.canvas_current_line_color,
+                                         self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
+
         if self.cur_fig_name == 'Ellipse':
             self.tags[max_tag] = Ellipse(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                          self.canvas_current_fill_color, max_tag)

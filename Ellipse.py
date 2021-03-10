@@ -24,7 +24,7 @@ class Ellipse(TwoDim):
     def draw(self, canvas):
         self.id = canvas.create_oval(self.points[0].get_x(), self.points[0].get_y(),
                                      self.points[-1].get_x(), self.points[-1].get_y(),
-                                     width=3, tags=(self.tags,))
+                                     width=3, outline=self.line_color, fill=self.fill_color, tags=(self.tags,))
         self.obj.append(self.id)
 
     def fill(self):
