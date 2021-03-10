@@ -12,7 +12,8 @@ from TwoDim import TwoDim
 
 
 class Polygon(TwoDim):
-    def __init__(self, x1, y1, x2, y2, color):
+    def __init__(self, x1, y1, x2, y2, color, tags):
+        self.tags = tags
         TwoDim.__init__(self)
         self.line_color = color
         self.points.append(Point(x1, y1))

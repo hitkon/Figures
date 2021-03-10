@@ -21,8 +21,5 @@ class TwoDim(Figure):
     def get_fill_color(self):
         return self.fill_color
 
-    def move(self, delta):
-        pass
-
     def set_fill_color(self, color):
         self.fill_color = color
