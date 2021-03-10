@@ -12,24 +12,36 @@ from TwoDim import TwoDim
 
 
 class Polygon(TwoDim):
-    def __init__(self, _points, line_color, fill_color,  tags):
+    def __init__(self, _points, x , y, line_color, fill_color,  tags, event):
         self.tags = tags
+        self.points2 = []
         TwoDim.__init__(self)
         self.line_color = line_color
         self.fill_color = fill_color
         self.tags = tags
         self.id = None
+        self.state = False
+        if(event.state == 288):
+            self.state = True
 
         self.points = _points
+        self.points.append(Point(x, y))
 
     def draw(self, canvas):
-        self.points2 = []
+
         for i in self.points:
             self.points2.append(i.x)
             self.points2.append(i.y)
 
-        self.id = canvas.create_polygon(self.points2, outline=self.line_color,
+        if (self.state == True):
+            self.id = canvas.create_polygon(self.points2, outline=self.line_color,
                                         fill=self.fill_color, width=3, tags=(self.tags,))
+        else:
+            self.id = canvas.create_line(self.points2, fill=self.fill_color,
+                                             width=3, tags=(self.tags,))
+        self.points.pop()
+        self.points2.pop()  # WTF
+        self.points2.pop()
         self.obj.append(self.id)
 
     def fill(self):

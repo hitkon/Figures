@@ -78,8 +78,8 @@ class App(tkinter.Tk):
 
         if self.cur_fig_name == 'Polygon':
             # points = [x1, y1, event.x, event.y]
-            # self.tags[max_tag] = Polygon(points, self.canvas_current_line_color,
-            #                             self.canvas_current_fill_color, max_tag)
+            self.tags[max_tag] = Polygon(self.points, event.x, event.y, self.canvas_current_line_color,
+                                        self.canvas_current_fill_color, max_tag, event)
             return self.tags[max_tag]
 
         if self.cur_fig_name == 'Triangle':
@@ -138,6 +138,7 @@ class App(tkinter.Tk):
                 o.move(delta, self.canvas)
 
     def mouse_released(self, event):
+        #print(event.state)
         if self.cursor == 'Standard':
             if self.canvas_cur_fig:
                 self.canvas_cur_fig.delete(self.canvas)

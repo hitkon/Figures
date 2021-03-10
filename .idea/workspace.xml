@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6224ae89-b084-4109-a529-9af977223b02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Line.py" beforeDir="false" afterPath="$PROJECT_DIR$/Line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PolygonalLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/PolygonalLine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Polygon.py" beforeDir="false" afterPath="$PROJECT_DIR$/Polygon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +33,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Applications\anaconda3\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\ivanz\PycharmProjects\PyCharmLearningProject\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -101,7 +99,15 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Figures$main.coverage" NAME="main Coverage Results" MODIFIED="1615368095173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Polygon.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
