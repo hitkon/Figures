@@ -8,6 +8,7 @@
 # 
 #######################################################
 from Polygon import Polygon
+from Point import Point
 
 
 class RegularPolygon(Polygon):
@@ -19,13 +20,15 @@ class RegularPolygon(Polygon):
 
         x1, y1, x2, y2 = tuple(points)
         if num_sides == 3:
-            self.points = [x1, y2, (x1 + x2) / 2, y1, x2, y2]
+            self.points = [Point(x1, y2), Point((x1 + x2) / 2, y1), Point(x2, y2)]
         if num_sides == 4:
-            self.points = [x1, y1, x2, y1, x2, y2, x1, y2]
+            self.points = [Point(x1, y1), Point(x2, y1), Point(x2, y2), Point(x1, y2)]
         if num_sides == 5:
             dx = (x2 - x1) / 5
             dy = (y2 - y1) / 2.5
-            self.points = [x1 + dx, y2, x1, y1 + dy, (x1 + x2) / 2, y1, x2, y1 + dy, x2 - dx, y2]
+            self.points = [Point(x1 + dx, y2), Point(x1, y1 + dy), Point((x1 + x2) / 2, y1),
+                            Point(x2, y1 + dy), Point(x2 - dx, y2)]
+
         Polygon.__init__(self, self.points,  line_color, fill_color, tags)
 
     def get_sides_num(self):

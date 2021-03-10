@@ -8,6 +8,7 @@
 # 
 #######################################################
 from Polygon import Polygon
+from Point import Point
 
 
 class Rhombus(Polygon):
@@ -18,7 +19,8 @@ class Rhombus(Polygon):
         self.id = None
 
         x1, y1, x2, y2 = tuple(points)
-        self.points = [x1, (y1 + y2) / 2, (x1 + x2) / 2, y1, x2, (y1 + y2) / 2, (x1 + x2) / 2, y2]
+        self.points = [Point(x1, (y1 + y2) / 2), Point((x1 + x2) / 2, y1),
+                       Point(x2, (y1 + y2) / 2), Point((x1 + x2) / 2, y2)]
         Polygon.__init__(self, self.points, line_color, fill_color, tags)
 
     def get_sides_num(self):

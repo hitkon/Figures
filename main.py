@@ -119,8 +119,9 @@ class App(tkinter.Tk):
             delta = Point(event.x - self.canvas_old_coords[0], event.y - self.canvas_old_coords[1])
             self.canvas_old_coords = event.x, event.y
             tag = self.canvas.itemcget("current", "tags")
-            o = self.tags[int(tag.split(' ', 1)[0])]
-            o.move(delta, self.canvas)
+            if tag != '':
+                o = self.tags[int(tag.split(' ', 1)[0])]
+                o.move(delta, self.canvas)
 
     def mouse_released(self, event):
         if self.cursor == 'Standard':
