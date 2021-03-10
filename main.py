@@ -22,6 +22,7 @@ class App(tkinter.Tk):
 
     def __init__(self):
         super().__init__()
+        self.title("Paint")
         self.canvas_cur_fig = None
         self.canvas_old_coords = None
         self.canvas_current_fill_color = 'white'
@@ -156,8 +157,9 @@ class App(tkinter.Tk):
         self.cur_fig_name = figure_name
 
     def delete_last_figure(self, event=None):
-        self.figures[-1].delete(self.canvas)
-        self.figures.pop()
+        pass
+        # self.figures[-1].delete(self.canvas)
+        #self.figures.pop()
         # print('z-pressed')
 
     def move(self):
