@@ -33,12 +33,12 @@ class Polygon(TwoDim):
             self.points2.append(i.x)
             self.points2.append(i.y)
 
-        if (self.state == True):
-            self.id = canvas.create_polygon(self.points2, outline=self.line_color,
+        #if (self.state == True):
+        self.id = canvas.create_polygon(self.points2, outline=self.line_color,
                                         fill=self.fill_color, width=3, tags=(self.tags,))
-        else:
-            self.id = canvas.create_line(self.points2, fill=self.fill_color,
-                                             width=3, tags=(self.tags,))
+        #else:
+        #    self.id = canvas.create_line(self.points2, fill=self.line_color,
+        #                                     width=3, tags=(self.tags,))
         self.points.pop()
         self.points2.pop()  # WTF
         self.points2.pop()
