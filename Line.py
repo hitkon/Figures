@@ -14,22 +14,14 @@ from Point import Point
 class Line(Interval):
     def __init__(self, x1, y1, x2, y2, color, width, height, tags):
         if x1 == x2:
-            Interval.__init__(self, x1, 0, x1, height, color, tags)
+            Interval.__init__(self, x1, 0, x1, height * 10, color, tags)
         elif y1 == y2:
-            Interval.__init__(self, 0, y1, width, y1, color, tags)
+            Interval.__init__(self, 0, y1, width * 10, y1, color, tags)
         else:
             points = []
-            bufy = ((y1 - y2) * width + x1 * y2 - x2 * y1) / (x1 - x2)
-            if 0 <= bufy <= height:
-                points.append(Point(width, bufy))
-            bufy = (x1 * y2 - x2 * y1) / (x1 - x2)
-            if 0 <= bufy <= height:
-                points.append(Point(0, bufy))
-            bufx = ((x2 - x1) * height + x1 * y2 - x2 * y1) / (y2 - y1)
-            if 0 <= bufx <= width:
-                points.append(Point(bufx, height))
-            bufx = (x1 * y2 - x2 * y1) / (y2 - y1)
-            if 0 <= bufx <= width:
-                points.append(Point(bufx, 0))
+            bufy = ((y1 - y2) * width * 10 + x1 * y2 - x2 * y1) / (x1 - x2)
+            points.append(Point(width * 10, bufy))
+            bufy = ((y1 - y2) * width * (-10) + x1 * y2 - x2 * y1) / (x1 - x2)
+            points.append(Point(width * (-10), bufy))
             Interval.__init__(self, points[0].get_x(), points[0].get_y(),
                               points[-1].get_x(), points[-1].get_y(), color, tags)
