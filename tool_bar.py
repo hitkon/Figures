@@ -29,10 +29,10 @@ class ToolBar(Frame):
                                               width=10, height=1).grid(row=6, column=0, padx=3, pady=5)
         self.button_pentagon = tkinter.Button(self, text='Pentagon', command=FigureChooser(app, 'Pentagon'),
                                               width=10, height=1).grid(row=6, column=1, padx=3, pady=5)
-        self.button_oval = tkinter.Button(self, text='Oval', command=FigureChooser(app, 'Oval'),
-                                          width=10, height=1).grid(row=7, column=0, padx=3, pady=5)
-        self.button_oval = tkinter.Button(self, text='Polygon', command=FigureChooser(app, 'Polygon'),
-                                          width=10, height=1).grid(row=7, column=1, padx=3, pady=5)
+        self.button_ellipse = tkinter.Button(self, text='Ellipse', command=FigureChooser(app, 'Ellipse'),
+                                             width=10, height=1).grid(row=7, column=0, padx=3, pady=5)
+        self.button_polygon = tkinter.Button(self, text='Polygon', command=FigureChooser(app, 'Polygon'),
+                                             width=10, height=1).grid(row=7, column=1, padx=3, pady=5)
 
         self.button_pace1 = tkinter.Button(self, text='', width=20, height=1, relief=tkinter.FLAT) \
             .grid(row=8, column=0, padx=23, pady=1, columnspan=2)

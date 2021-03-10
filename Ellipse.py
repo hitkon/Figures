@@ -7,12 +7,25 @@
 # Original author: tealh
 # 
 #######################################################
-import TwoDim
+from TwoDim import TwoDim
+from Point import Point
 
 
 class Ellipse(TwoDim):
-    def draw(self):
-        pass
+    def __init__(self, x1, y1, x2, y2, line_color, fill_color, tags):
+        TwoDim.__init__(self)
+        self.line_color = line_color
+        self.fill_color = fill_color
+        self.points.append(Point(x1, y1))
+        self.points.append(Point(x2, y2))
+        self.tags = tags
+        self.id = None
+
+    def draw(self, canvas):
+        self.id = canvas.create_oval(self.points[0].get_x(), self.points[0].get_y(),
+                                     self.points[-1].get_x(), self.points[-1].get_y(),
+                                     width=3, tags=(self.tags,))
+        self.obj.append(self.id)
 
     def fill(self):
         pass

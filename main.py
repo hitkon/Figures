@@ -2,12 +2,16 @@ import tkinter
 from tkinter import colorchooser
 
 from Point import Point
-from Polygon import Polygon
 from tool_bar import ToolBar
 
 from Interval import Interval
 from Ray import Ray
 from Line import Line
+
+from Polygon import Polygon
+from Ellipse import Ellipse
+
+
 
 
 class App(tkinter.Tk):
@@ -17,7 +21,7 @@ class App(tkinter.Tk):
         super().__init__()
         self.canvas_cur_fig = None
         self.canvas_old_coords = None
-        self.canvas_current_fill_color = 'black'
+        self.canvas_current_fill_color = 'white'
         self.canvas_current_line_color = 'black'
         self.geometry("1000x600")
 
@@ -33,8 +37,8 @@ class App(tkinter.Tk):
 
         self.left_mouse_button_pressed = False
         self.bind('<Key-z>', self.delete_last_figure)
-        self.bind('<KeyPress>', self.set_regular_on_alt_press)
-        self.bind('<KeyRelease>', self.set_no_regular_in_alt_release)
+        self.bind('<KeyPress-Alt_L>', self.set_regular_on_alt_press)
+        self.bind('<KeyRelease-Alt_L>', self.set_no_regular_on_alt_release)
 
         self.is_regular = False
 
@@ -67,6 +71,10 @@ class App(tkinter.Tk):
         if self.cur_fig_name == 'Polygon':
             self.tags[max_tag] = Polygon(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
             return self.tags[max_tag]
+        if self.cur_fig_name == 'Ellipse':
+            self.tags[max_tag] = Ellipse(x1, y1, event.x, event.y, self.canvas_current_line_color,
+                                         self.canvas_current_fill_color, max_tag)
+            return self.tags[max_tag]
 
     def left_click(self, event):
         self.canvas_old_coords = event.x, event.y
@@ -96,13 +104,13 @@ class App(tkinter.Tk):
     def line_color(self):
         self.canvas_current_line_color = colorchooser.askcolor()[1]
 
-    def choose_figure_name(self, figure_name):
-        self.cur_fig_name = figure_name
-
     def fill_color(self):
         self.canvas_current_fill_color = colorchooser.askcolor()[1]
 
-    def delete_last_figure(self):
+    def choose_figure_name(self, figure_name):
+        self.cur_fig_name = figure_name
+
+    def delete_last_figure(self, event=None):
         self.figures[-1].delete(self.canvas)
         self.figures.pop()
         # print('z-pressed')
@@ -115,12 +123,10 @@ class App(tkinter.Tk):
         self.canvas.delete("all")
 
     def set_regular_on_alt_press(self, event=None):
-        if event.keysym == 'Alt_L':
-            self.is_regular = True
+        self.is_regular = True
 
-    def set_no_regular_in_alt_release(self, event=None):
-        if event.keysym == 'Alt_L':
-            self.is_regular = False
+    def set_no_regular_on_alt_release(self, event=None):
+        self.is_regular = False
 
     def process_regular(self, x1, y1, x2, y2):
         if self.is_regular:
