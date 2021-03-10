@@ -76,12 +76,6 @@ class App(tkinter.Tk):
             self.tags[max_tag] = Interval(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
             return self.tags[max_tag]
 
-        if self.cur_fig_name == 'Polygon':
-            # points = [x1, y1, event.x, event.y]
-            # self.tags[max_tag] = Polygon(points, self.canvas_current_line_color,
-            #                             self.canvas_current_fill_color, max_tag)
-            return self.tags[max_tag]
-
         if self.cur_fig_name == 'Triangle':
             points = [x1, y1, event.x, event.y]
             self.tags[max_tag] = RegularPolygon(points, 3, self.canvas_current_line_color,
@@ -113,6 +107,12 @@ class App(tkinter.Tk):
 
         if self.cur_fig_name == 'Polygonal Line':
             self.tags[max_tag] = PolygonalLine(self.points, event.x, event.y, self.canvas_current_line_color, max_tag)
+            return self.tags[max_tag]
+
+        if self.cur_fig_name == 'Polygon':
+            self.points.append(Point(event.x, event.y))
+            self.tags[max_tag] = Polygon(self.points, self.canvas_current_line_color,
+                                         self.canvas_current_fill_color, max_tag, event.x, event.y)
             return self.tags[max_tag]
 
     def left_click(self, event):

@@ -12,7 +12,7 @@ from TwoDim import TwoDim
 
 
 class Polygon(TwoDim):
-    def __init__(self, _points, line_color, fill_color,  tags):
+    def __init__(self, _points, line_color, fill_color,  tags, x=None, y=None):
         self.tags = tags
         TwoDim.__init__(self)
         self.line_color = line_color
@@ -22,14 +22,20 @@ class Polygon(TwoDim):
 
         self.points = _points
 
+        self.x, self.y = x, y
+
     def draw(self, canvas):
         self.points2 = []
         for i in self.points:
             self.points2.append(i.x)
             self.points2.append(i.y)
+        if self.x is not None and self.y is not None:
+            self.points2.append(self.x)
+            self.points2.append(self.y)
 
         self.id = canvas.create_polygon(self.points2, outline=self.line_color,
                                         fill=self.fill_color, width=3, tags=(self.tags,))
+        self.points.pop()
         self.obj.append(self.id)
 
     def fill(self):
