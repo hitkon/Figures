@@ -49,8 +49,8 @@ class ToolBar(Frame):
         self.button_pace1 = tkinter.Button(self, text='', width=20, height=1, relief=tkinter.FLAT) \
             .grid(row=13, column=0, padx=23, pady=1, columnspan=2)
 
-        self.button_help = tkinter.Button(self, text='Help', command=app.fill_color, width=10, height=2)
-        self.button_help.grid(row=14, column=1, padx=10, pady=1)
+        #self.button_help = tkinter.Button(self, text='Help', command=app.fill_color, width=10, height=2)
+        #self.button_help.grid(row=14, column=1, padx=10, pady=1)
 
 
 class FigureChooser:
