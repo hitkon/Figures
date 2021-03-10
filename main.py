@@ -60,16 +60,12 @@ class App(tkinter.Tk):
                                       self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
                                       self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
             return self.tags[max_tag]
-<<<<<<< HEAD
 
-=======
->>>>>>> ab867fdb2fd7c6a4ecb2f3184e347df4fa168390
         if self.cur_fig_name == 'Ray':
             self.tags[max_tag] = Ray(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                      self.canvas.winfo_width() * App.DEFAULT_WINDOW_MUL,
                                      self.canvas.winfo_height() * App.DEFAULT_WINDOW_MUL, max_tag)
             return self.tags[max_tag]
-<<<<<<< HEAD
 
         if self.cur_fig_name == 'Interval':
             self.tags[max_tag] = Interval(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
@@ -108,13 +104,6 @@ class App(tkinter.Tk):
         if self.cur_fig_name == 'Ellipse':
             self.tags[max_tag] = Ellipse(x1, y1, event.x, event.y, self.canvas_current_line_color,
                                          self.canvas_current_fill_color, max_tag)
-=======
-        if self.cur_fig_name == 'Interval':
-            self.tags[max_tag] = Interval(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
-            return self.tags[max_tag]
-        if self.cur_fig_name == 'Polygon':
-            self.tags[max_tag] = Polygon(x1, y1, event.x, event.y, self.canvas_current_line_color, max_tag)
->>>>>>> ab867fdb2fd7c6a4ecb2f3184e347df4fa168390
             return self.tags[max_tag]
 
     def left_click(self, event):
@@ -148,14 +137,10 @@ class App(tkinter.Tk):
     def fill_color(self):
         self.canvas_current_fill_color = colorchooser.askcolor()[1]
 
-<<<<<<< HEAD
     def choose_figure_name(self, figure_name):
         self.cur_fig_name = figure_name
 
     def delete_last_figure(self, event=None):
-=======
-    def delete_last_figure(self):
->>>>>>> ab867fdb2fd7c6a4ecb2f3184e347df4fa168390
         self.figures[-1].delete(self.canvas)
         self.figures.pop()
         # print('z-pressed')
